@@ -1,0 +1,66 @@
+
+//Intelligent Room System
+syntax = "proto3";
+
+// Sprinkler
+service Sprinkler {
+   rpc Notify (Temperature) returns (SprinklerReply) {}
+   rpc ActivateAlarm (Void) returns (SprinklerReply) {}
+   rpc DeactivateAlarm (Void) returns (SprinklerReply) {}
+}
+
+message Temperature {
+  int32 value = 1;
+}
+
+message SprinklerReply {
+  bool state = 1;
+  bool manual_action = 2;
+}
+
+// Lamp
+service Lamp {
+   rpc Notify (Lightness) returns (LampReply) {}
+   rpc TurnOn (Void) returns (LampReply) {}
+   rpc TurnOff (Void) returns (LampReply) {}
+   rpc ChangeColor (Color) returns (LampReply) {}
+}
+
+message Lightness {
+  float value = 1;
+}
+
+message LampReply {
+  bool is_on = 1;
+  bool manual_action = 2;
+  Color color = 3;
+}
+
+message Color {
+  string color = 1;
+}
+
+// RetractableRoof
+service RetractableRoof {
+   rpc Notify (RainPresence) returns (RetractableRoofReply) {}
+   rpc Open (Void) returns (RetractableRoofReply) {}
+   rpc Close (Void) returns (RetractableRoofReply) {}
+}
+
+message RainPresence {
+  bool value = 1;
+}
+
+message RetractableRoofReply {
+  bool is_open = 1;
+}
+
+message Void {
+
+}
+
+//To build this file
+//python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. atuadores_def.proto
+
+
+
