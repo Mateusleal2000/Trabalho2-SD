@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13\x61tuadores_def.proto\"\x1c\n\x0bTemperature\x12\r\n\x05value\x18\x01 \x01(\x05\"6\n\x0eSprinklerReply\x12\r\n\x05state\x18\x01 \x01(\x08\x12\x15\n\rmanual_action\x18\x02 \x01(\x08\"\x1a\n\tLightness\x12\r\n\x05value\x18\x01 \x01(\x02\"H\n\tLampReply\x12\r\n\x05is_on\x18\x01 \x01(\x08\x12\x15\n\rmanual_action\x18\x02 \x01(\x08\x12\x15\n\x05\x63olor\x18\x03 \x01(\x0b\x32\x06.Color\"\x16\n\x05\x43olor\x12\r\n\x05\x63olor\x18\x01 \x01(\t\"\x1d\n\x0cRainPresence\x12\r\n\x05value\x18\x01 \x01(\x08\"\'\n\x14RetractableRoofReply\x12\x0f\n\x07is_open\x18\x01 \x01(\x08\"\x06\n\x04Void2\x8e\x01\n\tSprinkler\x12)\n\x06Notify\x12\x0c.Temperature\x1a\x0f.SprinklerReply\"\x00\x12)\n\rActivateAlarm\x12\x05.Void\x1a\x0f.SprinklerReply\"\x00\x12+\n\x0f\x44\x65\x61\x63tivateAlarm\x12\x05.Void\x1a\x0f.SprinklerReply\"\x00\x32\x8e\x01\n\x04Lamp\x12\"\n\x06Notify\x12\n.Lightness\x1a\n.LampReply\"\x00\x12\x1d\n\x06TurnOn\x12\x05.Void\x1a\n.LampReply\"\x00\x12\x1e\n\x07TurnOff\x12\x05.Void\x1a\n.LampReply\"\x00\x12#\n\x0b\x43hangeColor\x12\x06.Color\x1a\n.LampReply\"\x00\x32\x94\x01\n\x0fRetractableRoof\x12\x30\n\x06Notify\x12\r.RainPresence\x1a\x15.RetractableRoofReply\"\x00\x12&\n\x04Open\x12\x05.Void\x1a\x15.RetractableRoofReply\"\x00\x12\'\n\x05\x43lose\x12\x05.Void\x1a\x15.RetractableRoofReply\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13\x61tuadores_def.proto\"\x1c\n\x0bTemperature\x12\r\n\x05value\x18\x01 \x01(\x05\"6\n\x0eSprinklerReply\x12\r\n\x05state\x18\x01 \x01(\x08\x12\x15\n\rmanual_action\x18\x02 \x01(\x08\"\x1a\n\tLightness\x12\r\n\x05value\x18\x01 \x01(\x02\"H\n\tLampReply\x12\r\n\x05is_on\x18\x01 \x01(\x08\x12\x15\n\rmanual_action\x18\x02 \x01(\x08\x12\x15\n\x05\x63olor\x18\x03 \x01(\x0b\x32\x06.Color\"\x16\n\x05\x43olor\x12\r\n\x05\x63olor\x18\x01 \x01(\t\"\x1d\n\x0cRainPresence\x12\r\n\x05value\x18\x01 \x01(\x08\"\'\n\x14RetractableRoofReply\x12\x0f\n\x07is_open\x18\x01 \x01(\x08\"B\n\x10RemoteCallParams\x12\x10\n\x08\x61\x63tuator\x18\x01 \x01(\x05\x12\x0e\n\x06method\x18\x02 \x01(\x05\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\"n\n\tActuators\x12\"\n\tsprinkler\x18\x01 \x01(\x0b\x32\x0f.SprinklerReply\x12#\n\x04roof\x18\x02 \x01(\x0b\x32\x15.RetractableRoofReply\x12\x18\n\x04lamp\x18\x03 \x01(\x0b\x32\n.LampReply\"q\n\x07Sensors\x12!\n\x0btemperature\x18\x01 \x01(\x0b\x32\x0c.Temperature\x12\x1d\n\tlightness\x18\x02 \x01(\x0b\x32\n.Lightness\x12$\n\rrain_presence\x18\x03 \x01(\x0b\x32\r.RainPresence\"\x06\n\x04Void2\x8e\x01\n\tSprinkler\x12)\n\x06Notify\x12\x0c.Temperature\x1a\x0f.SprinklerReply\"\x00\x12)\n\rActivateAlarm\x12\x05.Void\x1a\x0f.SprinklerReply\"\x00\x12+\n\x0f\x44\x65\x61\x63tivateAlarm\x12\x05.Void\x1a\x0f.SprinklerReply\"\x00\x32\x8e\x01\n\x04Lamp\x12\"\n\x06Notify\x12\n.Lightness\x1a\n.LampReply\"\x00\x12\x1d\n\x06TurnOn\x12\x05.Void\x1a\n.LampReply\"\x00\x12\x1e\n\x07TurnOff\x12\x05.Void\x1a\n.LampReply\"\x00\x12#\n\x0b\x43hangeColor\x12\x06.Color\x1a\n.LampReply\"\x00\x32\x94\x01\n\x0fRetractableRoof\x12\x30\n\x06Notify\x12\r.RainPresence\x1a\x15.RetractableRoofReply\"\x00\x12&\n\x04Open\x12\x05.Void\x1a\x15.RetractableRoofReply\"\x00\x12\'\n\x05\x43lose\x12\x05.Void\x1a\x15.RetractableRoofReply\"\x00\x32\x81\x01\n\rHomeAssistant\x12$\n\rListActuators\x12\x05.Void\x1a\n.Actuators\"\x00\x12 \n\x0bListSensors\x12\x05.Void\x1a\x08.Sensors\"\x00\x12(\n\nCallMethod\x12\x11.RemoteCallParams\x1a\x05.Void\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'atuadores_def_pb2', globals())
@@ -34,12 +34,20 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _RAINPRESENCE._serialized_end=264
   _RETRACTABLEROOFREPLY._serialized_start=266
   _RETRACTABLEROOFREPLY._serialized_end=305
-  _VOID._serialized_start=307
-  _VOID._serialized_end=313
-  _SPRINKLER._serialized_start=316
-  _SPRINKLER._serialized_end=458
-  _LAMP._serialized_start=461
-  _LAMP._serialized_end=603
-  _RETRACTABLEROOF._serialized_start=606
-  _RETRACTABLEROOF._serialized_end=754
+  _REMOTECALLPARAMS._serialized_start=307
+  _REMOTECALLPARAMS._serialized_end=373
+  _ACTUATORS._serialized_start=375
+  _ACTUATORS._serialized_end=485
+  _SENSORS._serialized_start=487
+  _SENSORS._serialized_end=600
+  _VOID._serialized_start=602
+  _VOID._serialized_end=608
+  _SPRINKLER._serialized_start=611
+  _SPRINKLER._serialized_end=753
+  _LAMP._serialized_start=756
+  _LAMP._serialized_end=898
+  _RETRACTABLEROOF._serialized_start=901
+  _RETRACTABLEROOF._serialized_end=1049
+  _HOMEASSISTANT._serialized_start=1052
+  _HOMEASSISTANT._serialized_end=1181
 # @@protoc_insertion_point(module_scope)

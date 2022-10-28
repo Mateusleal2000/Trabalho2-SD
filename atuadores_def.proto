@@ -55,12 +55,47 @@ message RetractableRoofReply {
   bool is_open = 1;
 }
 
-message Void {
+
+service HomeAssistant {
+   rpc ListActuators (Void) returns (Actuators) {}
+   rpc ListSensors (Void) returns (Sensors) {}
+   rpc CallMethod (RemoteCallParams) returns (Void) {}
+}
+
+
+message RemoteCallParams {
+  int32 actuator = 1;
+  int32 method = 2;
+  repeated string args = 3;       
+}
+
+message Actuators {
+
+  SprinklerReply sprinkler = 1;
+  RetractableRoofReply roof = 2;
+  LampReply lamp = 3;
 
 }
 
+message Sensors {
+
+  Temperature temperature = 1;
+  Lightness lightness = 2;
+  RainPresence rain_presence = 3;
+
+}
+
+
+message Void {
+
+}
 //To build this file
 //python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. atuadores_def.proto
 
-
+// string id_obj = 1;
+//   oneof obj {
+//       Lamp objL = 2;
+//       Treadmill objT = 3;
+//       AC objA = 4;
+//   }
 
