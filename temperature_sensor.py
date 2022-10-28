@@ -7,8 +7,8 @@ from channel_utils import Channel
 temperature_channel = Channel()
 
 def notify(channel, exchange):
-    Timer(2.0, notify, args=(channel, exchange)).start()
-    temperature_value = int(random.random()*620)
+    Timer(6.0, notify, args=(channel, exchange)).start()
+    temperature_value = int(random.random()*110)
     temperature = atuadores_def_pb2.Temperature(value=temperature_value)
 
     channel.basic_publish(
