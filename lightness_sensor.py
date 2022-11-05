@@ -8,7 +8,7 @@ light_channel = Channel()
 
 
 def notify(channel, exchange):
-    Timer(6.0, notify, args=(channel, exchange)).start()
+    Timer(10.0, notify, args=(channel, exchange)).start()
     lightness_value = random.random()
     lightness = atuadores_def_pb2.Lightness(value=lightness_value)
 
