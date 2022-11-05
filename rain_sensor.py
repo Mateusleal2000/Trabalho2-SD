@@ -7,7 +7,7 @@ from channel_utils import Channel
 rain_channel = Channel()
 
 def notify(channel, exchange):
-    Timer(15.0, notify, args=(channel, exchange)).start()
+    Timer(10.0, notify, args=(channel, exchange)).start()
     rainning_val = random.random()
     rainning = True if rainning_val < 0.45 else False
     rain_presence = atuadores_def_pb2.RainPresence(value=rainning)

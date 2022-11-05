@@ -8,9 +8,7 @@ import logging
 import grpc
 from concurrent import futures
 
-from lightness_sensor import notify_lightness
-from temperature_sensor import notify_temperature
-from rain_sensor import notify_rain
+
 
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -27,8 +25,8 @@ def serve():
 if __name__ == '__main__':
     logging.basicConfig()
 
-    notify_lightness()
-    notify_temperature()
-    notify_rain()
+    # notify_lightness()
+    # notify_temperature()
+    # notify_rain()
     
     serve()

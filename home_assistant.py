@@ -27,6 +27,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         self.lamp_channel = Channel()
         self.read_queues()
         self.serve()
+        print("HERE")
         
     def ListActuators(self, request, context):
         actuators = atuadores_def_pb2.Actuators(
@@ -47,7 +48,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         actuator = request.actuator
         method = request.method
         args = request.args
-        
+
         if actuator == 1:
             if method == 1:
                 self.sprinkler_reply = self.stub_sprinkler.ActivateAlarm(void)
@@ -78,7 +79,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
 
     def subscribe_lamp_queue(self):
         self.create_queue(self.callback_lamp, 'lightness', self.lamp_channel)
-    
+
     def subscribe_sprinkler_queue(self):
         self.create_queue(self.callback_sprinkler, 'temperature', self.sprinkler_channel)
 
@@ -94,7 +95,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         print("Lamp is  on?: " + str(self.lamp_reply.is_on))
         print("Lamp manual activation: " + str(self.lamp_reply.manual_action))
         print("Lamp color: " + str(self.lamp_reply.color.color))
-        
+
     def callback_sprinkler(self, ch, method, properties, body):
         temperature = atuadores_def_pb2.Temperature(value=0)
         temperature.ParseFromString(body)
@@ -103,7 +104,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         self.sprinkler_reply = self.stub_sprinkler.Notify(temperature)
         print("Sprinkler state: " + str(self.sprinkler_reply.state))
         print("Sprinkler manual activation: " + str(self.sprinkler_reply.manual_action))
-        
+
     def callback_roof(self, ch, method, properties, body):
         rain = atuadores_def_pb2.RainPresence(value=False)
         rain.ParseFromString(body)
@@ -112,7 +113,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         self.roof_reply = self.stub_retractable_roof.Notify(rain) 
 
         print("Is Roof open: " + str(self.roof_reply.is_open))
-        
+
     def create_queue(self, callback, route, channel):
         queue = channel.create_queue()
         channel.bind(queue, route)
@@ -123,7 +124,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
         atuadores_def_pb2_grpc.add_HomeAssistantServicer_to_server(
             self, server)
-          
+
         server.add_insecure_port('[::]:3000')
         server.start()
         server.wait_for_termination()
