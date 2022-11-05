@@ -27,6 +27,7 @@ class HomeAssistant(atuadores_def_pb2_grpc.HomeAssistantServicer):
         self.lamp_channel = Channel()
         self.read_queues()
         self.serve()
+        print("HERE")
         
     def ListActuators(self, request, context):
         actuators = atuadores_def_pb2.Actuators(
